@@ -1,0 +1,41 @@
+.subckt AND4 A B C D F
+
+.include TSMC_180nm.txt
+.include NOT_SUB.sub
+
+.param LAMBDA = 0.18u
+.param width_N = {10*LAMBDA}
+.param width_P = {2.5*width_N}
+
+vdd vdd gnd 2.0V
+
+* PMOS part
+M1 E A vdd vdd CMOSP W={width_P} L={LAMBDA}
++ AS = {5*width_P*LAMBDA} PS = {10*LAMBDA + 2*width_P} AD = {5*width_P*LAMBDA} PD = {10*LAMBDA + 2*width_P}
+
+M2 E B vdd vdd CMOSP W={width_P} L={LAMBDA}
++ AS = {5*width_P*LAMBDA} PS = {10*LAMBDA + 2*width_P} AD = {5*width_P*LAMBDA} PD = {10*LAMBDA + 2*width_P}
+
+M3 E C vdd vdd CMOSP W={width_P} L={LAMBDA}
++ AS = {5*width_P*LAMBDA} PS = {10*LAMBDA + 2*width_P} AD = {5*width_P*LAMBDA} PD = {10*LAMBDA + 2*width_P}
+
+M4 E D vdd vdd CMOSP W={width_P} L={LAMBDA}
++ AS = {5*width_P*LAMBDA} PS = {10*LAMBDA + 2*width_P} AD = {5*width_P*LAMBDA} PD = {10*LAMBDA + 2*width_P}
+
+
+* NMOS part
+M5 E A x1 x1 CMOSN W={width_N} L={LAMBDA}
++ AS = {5*width_N*LAMBDA} PS = {10*LAMBDA + 2*width_N} AD = {5*width_N*LAMBDA} PD = {10*LAMBDA + 2*width_N}
+
+M6 x1 B x2 x2 CMOSN W={width_N} L={LAMBDA}
++ AS = {5*width_N*LAMBDA} PS = {10*LAMBDA + 2*width_N} AD = {5*width_N*LAMBDA} PD = {10*LAMBDA + 2*width_N}
+
+M7 x2 C x3 x3 CMOSN W={width_N} L={LAMBDA}
++ AS = {5*width_N*LAMBDA} PS = {10*LAMBDA + 2*width_N} AD = {5*width_N*LAMBDA} PD = {10*LAMBDA + 2*width_N}
+
+M8 x3 D gnd gnd CMOSN W={width_N} L={LAMBDA}
++ AS = {5*width_N*LAMBDA} PS = {10*LAMBDA + 2*width_N} AD = {5*width_N*LAMBDA} PD = {10*LAMBDA + 2*width_N}
+
+xG1 E F NOTNOT
+
+.ends

@@ -1,0 +1,26 @@
+.subckt FULL_ADDER A B C
+
+.include TSMC_180nm.txt
+.include NOT_SUB.sub
+.include AND2.sub
+.include AND3.sub
+.include AND4.sub
+.include AND5.sub
+.include XOR.sub
+.include OR.sub
+
+.param LAMBDA = 0.18u
+.param width_N = {10*LAMBDA}
+.param width_P = {2.5*width_N}
+
+vdd vdd gnd 2.0V
+
+xG1 A B P XOR
+xG2 A B G AND2
+
+xG3 C P sum XOR
+xG4 P C Cx AND2
+
+xG5 Cx G Cplus OR
+
+.ends

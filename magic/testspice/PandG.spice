@@ -1,0 +1,190 @@
+* SPICE3 file created from PandG.ext - technology: scmos
+
+.include TSMC_180nm.txt
+
+vdd vdd gnd 2.0V
+
+.option scale=0.09u
+
+Vin1 a0 gnd pulse(0 2.0 0 0.01p 0.01p 10n 20n)
+Vin2 b0 gnd pulse(0 2.0 0 0.01p 0.01p 20n 40n)
+
+Vin3 a1 gnd pulse(0 2.0 0 0.01p 0.01p 10n 20n)
+Vin4 b1 gnd pulse(0 2.0 0 0.01p 0.01p 20n 40n)
+
+Vin5 a2 gnd pulse(0 2.0 0 0.01p 0.01p 10n 20n)
+Vin6 b2 gnd pulse(0 2.0 0 0.01p 0.01p 20n 40n)
+
+Vin7 a3 gnd pulse(0 2.0 0 0.01p 0.01p 10n 20n)
+Vin8 b3 gnd pulse(0 2.0 0 0.01p 0.01p 20n 40n)
+
+
+M1000 b3bar b3 vdd XORinv_0/NOT_0/w_0_0# CMOSP w=8 l=2
++  ad=40 pd=26 as=188 ps=112
+M1001 b3bar b3 gnd gnd CMOSN w=4 l=2
++  ad=20 pd=18 as=170 ps=82
+M1002 a3bar a3 vdd XORinv_0/NOT_1/w_0_0# CMOSP w=8 l=2
++  ad=40 pd=26 as=0 ps=0
+M1003 a3bar a3 gnd gnd CMOSN w=4 l=2
++  ad=20 pd=18 as=0 ps=0
+M1004 vdd b3 XORinv_0/XOR_0/a_n5_3# XORinv_0/XOR_0/w_n57_n3# CMOSP w=9 l=4
++  ad=0 pd=0 as=162 ps=54
+M1005 gnd a3 XORinv_0/XOR_0/a_n41_n54# gnd CMOSN w=13 l=4
++  ad=0 pd=0 as=468 ps=124
+M1006 p3 b3 XORinv_0/XOR_0/a_n41_n54# gnd CMOSN w=13 l=4
++  ad=624 pd=148 as=0 ps=0
+M1007 XORinv_0/XOR_0/a_n41_n54# b3bar p3 gnd CMOSN w=13 l=4
++  ad=0 pd=0 as=0 ps=0
+M1008 XORinv_0/XOR_0/a_n41_n54# a3bar gnd gnd CMOSN w=13 l=4
++  ad=0 pd=0 as=0 ps=0
+M1009 XORinv_0/XOR_0/a_n5_3# a3bar p3 XORinv_0/XOR_0/w_n57_n3# CMOSP w=9 l=4
++  ad=0 pd=0 as=90 ps=38
+M1010 XORinv_0/XOR_0/a_n41_3# b3bar vdd XORinv_0/XOR_0/w_n57_n3# CMOSP w=9 l=4
++  ad=162 pd=54 as=0 ps=0
+M1011 p3 a3 XORinv_0/XOR_0/a_n41_3# XORinv_0/XOR_0/w_n57_n3# CMOSP w=9 l=4
++  ad=0 pd=0 as=0 ps=0
+M1012 g3 AND2_0/a_n1_n4# vdd AND2_0/NOTNOT_0/w_0_0# CMOSP w=8 l=2
++  ad=40 pd=26 as=265 ps=112
+M1013 g3 AND2_0/a_n1_n4# gnd gnd CMOSN w=4 l=2
++  ad=20 pd=18 as=110 ps=56
+M1014 AND2_0/a_n1_n4# a3 vdd AND2_0/w_n25_n10# CMOSP w=9 l=5
++  ad=117 pd=44 as=0 ps=0
+M1015 AND2_0/a_n1_n48# a3 gnd gnd CMOSN w=9 l=5
++  ad=117 pd=44 as=0 ps=0
+M1016 vdd b3 AND2_0/a_n1_n4# AND2_0/w_n25_n10# CMOSP w=9 l=5
++  ad=0 pd=0 as=0 ps=0
+M1017 AND2_0/a_n1_n4# b3 AND2_0/a_n1_n48# gnd CMOSN w=9 l=5
++  ad=135 pd=48 as=0 ps=0
+M1018 a_11_n162# b2bar vdd w_n5_n168# CMOSP w=9 l=4
++  ad=162 pd=54 as=1359 ps=672
+M1019 a_47_n445# a1bar p1 w_n5_n451# CMOSP w=9 l=4
++  ad=162 pd=54 as=90 ps=38
+M1020 g1in b1 a_12_n610# gnd CMOSN w=9 l=5
++  ad=135 pd=48 as=117 ps=44
+M1021 gnd a0 a_11_n774# gnd CMOSN w=13 l=4
++  ad=840 pd=414 as=468 ps=124
+M1022 p2 a2 a_11_n162# w_n5_n168# CMOSP w=9 l=4
++  ad=90 pd=38 as=0 ps=0
+M1023 a1bar a1 gnd gnd CMOSN w=4 l=2
++  ad=20 pd=18 as=0 ps=0
+M1024 vdd b1 a_47_n445# w_n5_n451# CMOSP w=9 l=4
++  ad=0 pd=0 as=0 ps=0
+M1025 g1 g1in gnd gnd CMOSN w=4 l=2
++  ad=20 pd=18 as=0 ps=0
+M1026 a0bar a0 vdd w_30_n660# CMOSP w=8 l=2
++  ad=40 pd=26 as=0 ps=0
+M1027 a_11_n774# a0bar gnd gnd CMOSN w=13 l=4
++  ad=0 pd=0 as=0 ps=0
+M1028 g0 g0in vdd w_59_n874# CMOSP w=8 l=2
++  ad=40 pd=26 as=0 ps=0
+M1029 a_47_n162# a2bar p2 w_n5_n168# CMOSP w=9 l=4
++  ad=162 pd=54 as=0 ps=0
+M1030 g2in b2 a_12_n327# gnd CMOSN w=9 l=5
++  ad=135 pd=48 as=117 ps=44
+M1031 a2bar a2 gnd gnd CMOSN w=4 l=2
++  ad=20 pd=18 as=0 ps=0
+M1032 g1in a1 vdd w_n12_n572# CMOSP w=9 l=5
++  ad=117 pd=44 as=0 ps=0
+M1033 p0 b0 a_11_n774# gnd CMOSN w=13 l=4
++  ad=624 pd=148 as=0 ps=0
+M1034 vdd b2 a_47_n162# w_n5_n168# CMOSP w=9 l=4
++  ad=0 pd=0 as=0 ps=0
+M1035 g2 g2in gnd gnd CMOSN w=4 l=2
++  ad=20 pd=18 as=0 ps=0
+M1036 b1bar b1 gnd gnd CMOSN w=4 l=2
++  ad=20 pd=18 as=0 ps=0
+M1037 b0bar b0 vdd w_n47_n743# CMOSP w=8 l=2
++  ad=40 pd=26 as=0 ps=0
+M1038 vdd b0 g0in w_n12_n844# CMOSP w=9 l=5
++  ad=0 pd=0 as=117 ps=44
+M1039 g2in a2 vdd w_n12_n289# CMOSP w=9 l=5
++  ad=117 pd=44 as=0 ps=0
+M1040 b2bar b2 gnd gnd CMOSN w=4 l=2
++  ad=20 pd=18 as=0 ps=0
+M1041 a_11_n717# b0bar vdd w_n5_n723# CMOSP w=9 l=4
++  ad=162 pd=54 as=0 ps=0
+M1042 a_11_n502# b1bar p1 gnd CMOSN w=13 l=4
++  ad=468 pd=124 as=624 ps=148
+M1043 a_12_n610# a1 gnd gnd CMOSN w=9 l=5
++  ad=0 pd=0 as=0 ps=0
+M1044 p0 a0 a_11_n717# w_n5_n723# CMOSP w=9 l=4
++  ad=90 pd=38 as=0 ps=0
+M1045 gnd a1 a_11_n502# gnd CMOSN w=13 l=4
++  ad=0 pd=0 as=0 ps=0
+M1046 a1bar a1 vdd w_30_n388# CMOSP w=8 l=2
++  ad=40 pd=26 as=0 ps=0
+M1047 g0in b0 a_12_n882# gnd CMOSN w=9 l=5
++  ad=135 pd=48 as=117 ps=44
+M1048 a_11_n219# b2bar p2 gnd CMOSN w=13 l=4
++  ad=468 pd=124 as=624 ps=148
+M1049 a_12_n327# a2 gnd gnd CMOSN w=9 l=5
++  ad=0 pd=0 as=0 ps=0
+M1050 g1 g1in vdd w_59_n602# CMOSP w=8 l=2
++  ad=40 pd=26 as=0 ps=0
+M1051 a0bar a0 gnd gnd CMOSN w=4 l=2
++  ad=20 pd=18 as=0 ps=0
+M1052 a_47_n717# a0bar p0 w_n5_n723# CMOSP w=9 l=4
++  ad=162 pd=54 as=0 ps=0
+M1053 a_11_n502# a1bar gnd gnd CMOSN w=13 l=4
++  ad=0 pd=0 as=0 ps=0
+M1054 vdd b0 a_47_n717# w_n5_n723# CMOSP w=9 l=4
++  ad=0 pd=0 as=0 ps=0
+M1055 a2bar a2 vdd w_30_n105# CMOSP w=8 l=2
++  ad=40 pd=26 as=0 ps=0
+M1056 gnd a2 a_11_n219# gnd CMOSN w=13 l=4
++  ad=0 pd=0 as=0 ps=0
+M1057 p1 b1 a_11_n502# gnd CMOSN w=13 l=4
++  ad=0 pd=0 as=0 ps=0
+M1058 g0 g0in gnd gnd CMOSN w=4 l=2
++  ad=20 pd=18 as=0 ps=0
+M1059 g2 g2in vdd w_59_n319# CMOSP w=8 l=2
++  ad=40 pd=26 as=0 ps=0
+M1060 b1bar b1 vdd w_n47_n471# CMOSP w=8 l=2
++  ad=40 pd=26 as=0 ps=0
+M1061 g0in a0 vdd w_n12_n844# CMOSP w=9 l=5
++  ad=0 pd=0 as=0 ps=0
+M1062 a_11_n219# a2bar gnd gnd CMOSN w=13 l=4
++  ad=0 pd=0 as=0 ps=0
+M1063 p2 b2 a_11_n219# gnd CMOSN w=13 l=4
++  ad=0 pd=0 as=0 ps=0
+M1064 vdd b1 g1in w_n12_n572# CMOSP w=9 l=5
++  ad=0 pd=0 as=0 ps=0
+M1065 b0bar b0 gnd gnd CMOSN w=4 l=2
++  ad=20 pd=18 as=0 ps=0
+M1066 a_11_n445# b1bar vdd w_n5_n451# CMOSP w=9 l=4
++  ad=162 pd=54 as=0 ps=0
+M1067 b2bar b2 vdd w_n47_n188# CMOSP w=8 l=2
++  ad=40 pd=26 as=0 ps=0
+M1068 p1 a1 a_11_n445# w_n5_n451# CMOSP w=9 l=4
++  ad=0 pd=0 as=0 ps=0
+M1069 vdd b2 g2in w_n12_n289# CMOSP w=9 l=5
++  ad=0 pd=0 as=0 ps=0
+M1070 a_12_n882# a0 gnd gnd CMOSN w=9 l=5
++  ad=0 pd=0 as=0 ps=0
+M1071 a_11_n774# b0bar p0 gnd CMOSN w=13 l=4
++  ad=0 pd=0 as=0 ps=0
+C0 gnd gnd 4.50fF
+C1 vdd gnd 2.61fF
+C2 gnd gnd 2.73fF
+
+.control
+tran 1n 80n
+set curplottitle= Aditya-Nair-2020102022-5-PandG
+plot v(a0) 
+plot v(b0)
+
+plot v(p0)
+plot v(g0)
+
+plot v(p1)
+plot v(g1)
+
+plot v(p2)
+plot v(g2)
+
+plot v(p3)
+plot v(g3)
+.endc
+.end
+
+* AND2_0/NOTNOT_0/a_13_n12# -> g3

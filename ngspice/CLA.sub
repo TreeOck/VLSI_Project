@@ -1,0 +1,48 @@
+.subckt CLA C0 P0 G0 G1 P1 G2 P2 G3 P3 C1 C2 C3 C4
+
+.include TSMC_180nm.txt
+.include NOT_SUB.sub
+.include AND2.sub
+.include AND3.sub
+.include AND4.sub
+.include AND5.sub
+.include XOR.sub
+.include OR.sub
+
+.param LAMBDA = 0.18u
+.param width_N = {10*LAMBDA}
+.param width_P = {2.5*width_N}
+
+* Defining the inputs
+vdd vdd gnd 2.0V
+
+* Making the logic part
+* C1
+xG1 P0 C0 x1 AND2
+xG2 G0 x1 C1 OR
+
+* C2
+xG3 C0 P0 P1 x2 AND3
+xG4 G0 P1 x3 AND2
+xG5 x3 G1 x4 OR
+xG6 x2 x4 C2 OR
+
+* C3
+xG7 P2 P1 P0 C0 x5 AND4
+xG8 P2 P1 G0 x6 AND3
+xG9 P2 G1 x7 AND2
+xG10 G2 x7 x8 OR
+xG11 x8 x6 x9 OR
+xG12 x9 x5 C3 OR
+
+* C4
+xG13 C0 P0 P1 P2 P3 x10 AND5
+xG14 P3 P2 P1 G0 x11 AND4
+xG15 P3 P2 G1 x12 AND3
+xG16 P3 G2 x13 AND2
+xG17 G3 x13 x14 OR
+xG18 x14 x12 x15 OR
+xG19 x15 x11 x16 OR
+xG20 x16 x10 C4 OR
+
+.ends

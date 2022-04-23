@@ -1,0 +1,51 @@
+* XOR gate pre-simulation
+
+.include TSMC_180nm.txt
+.include NOT_SUB.sub
+
+.param LAMBDA = 0.18u
+.param width_N = {10*LAMBDA}
+.param width_P = {2.5*width_N}
+
+vdd vdd gnd 2.0V
+
+* For compliment, the pulse(0 2.0) can be changed to pulse(2.0 0)
+Vin1 A gnd pulse(0 2.0 0 0.01p 0.01p 10n 20n)
+Vin2 B gnd pulse(0 2.0 0 0.01p 0.01p 20n 40n)
+
+xG1 A C NOTNOT
+xG2 B D NOTNOT
+
+M1 x1 C vdd vdd CMOSP W={width_P} L={LAMBDA}
++ AS = {5*width_P*LAMBDA} PS = {10*LAMBDA + 2*width_P} AD = {5*width_P*LAMBDA} PD = {10*LAMBDA + 2*width_P}
+
+M2 R B x1 x1 CMOSP W={width_P} L={LAMBDA}
++ AS = {5*width_P*LAMBDA} PS = {10*LAMBDA + 2*width_P} AD = {5*width_P*LAMBDA} PD = {10*LAMBDA + 2*width_P}
+
+M3 x2 A vdd vdd CMOSP W={width_P} L={LAMBDA}
++ AS = {5*width_P*LAMBDA} PS = {10*LAMBDA + 2*width_P} AD = {5*width_P*LAMBDA} PD = {10*LAMBDA + 2*width_P}
+
+M4 R D x2 x2 CMOSP W={width_P} L={LAMBDA}
++ AS = {5*width_P*LAMBDA} PS = {10*LAMBDA + 2*width_P} AD = {5*width_P*LAMBDA} PD = {10*LAMBDA + 2*width_P}
+
+
+M5 R A x3 x3 CMOSN W={width_N} L={LAMBDA}
++ AS = {5*width_N*LAMBDA} PS = {10*LAMBDA + 2*width_N} AD = {5*width_N*LAMBDA} PD = {10*LAMBDA + 2*width_N}
+
+M6 x3 B gnd gnd CMOSN W={width_N} L={LAMBDA}
++ AS = {5*width_N*LAMBDA} PS = {10*LAMBDA + 2*width_N} AD = {5*width_N*LAMBDA} PD = {10*LAMBDA + 2*width_N}
+
+M7 R C x4 x4 CMOSN W={width_N} L={LAMBDA}
++ AS = {5*width_N*LAMBDA} PS = {10*LAMBDA + 2*width_N} AD = {5*width_N*LAMBDA} PD = {10*LAMBDA + 2*width_N}
+
+M8 x4 D gnd gnd CMOSN W={width_N} L={LAMBDA}
++ AS = {5*width_N*LAMBDA} PS = {10*LAMBDA + 2*width_N} AD = {5*width_N*LAMBDA} PD = {10*LAMBDA + 2*width_N}
+
+.control
+tran 1n 120n
+set curplottitle= Aditya-Nair-2020102022-3-XOR
+plot v(A)
+plot v(B)
+plot v(R)
+.endc
+.end

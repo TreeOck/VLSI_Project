@@ -1,0 +1,26 @@
+.subckt OR A B E
+
+.include TSMC_180nm.txt
+.include NOT_SUB.sub
+
+.param LAMBDA = 0.18u
+.param width_N = {10*LAMBDA}
+.param width_P = {2.5*width_N}
+
+vdd vdd gnd 2.0V
+
+M1 D A vdd vdd CMOSP W={width_P} L={LAMBDA}
++ AS = {5*width_P*LAMBDA} PS = {10*LAMBDA + 2*width_P} AD = {5*width_P*LAMBDA} PD = {10*LAMBDA + 2*width_P}
+
+M2 C B D D CMOSP W={width_P} L={LAMBDA}
++ AS = {5*width_P*LAMBDA} PS = {10*LAMBDA + 2*width_P} AD = {5*width_P*LAMBDA} PD = {10*LAMBDA + 2*width_P}
+
+M3 C A gnd gnd CMOSN W={width_N} L={LAMBDA}
++ AS = {5*width_N*LAMBDA} PS = {10*LAMBDA + 2*width_N} AD = {5*width_N*LAMBDA} PD = {10*LAMBDA + 2*width_N}
+
+M4 C B gnd gnd CMOSN W={width_N} L={LAMBDA}
++ AS = {5*width_N*LAMBDA} PS = {10*LAMBDA + 2*width_N} AD = {5*width_N*LAMBDA} PD = {10*LAMBDA + 2*width_N}
+
+xG1 C E NOTNOT
+
+.ends
